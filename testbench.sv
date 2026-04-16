@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`include "shift_register.sv"
+//`include "shift_register.sv"
 
 module testbench();
 
