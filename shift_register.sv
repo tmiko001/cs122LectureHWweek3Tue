@@ -1,13 +1,11 @@
-module shift_register #(
-    parameter DIRECTION = 1
-)(
+module shift_register (
     input  logic        clk,
     input  logic        rst,
     input  logic        data,
     input  logic        wr_en,
     output logic [31:0] out
 );
-
+    parameter DIRECTION = 1; // 1 for MSB, 0 for LSB
     always_ff @(posedge clk) begin
         if (rst) begin
             out <= 32'b0;
