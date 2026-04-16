@@ -5,16 +5,14 @@ module shift_register (
     input  logic        wr_en,
     output logic [31:0] out
 );
-    parameter DIRECTION = 1; // 1 for MSB, 0 for LSB
+    parameter DIRECTION = 1;
     always_ff @(posedge clk) begin
         if (rst) begin
             out <= 32'b0;
         end else if (wr_en) begin
             if (DIRECTION == 1) begin
-                // MSB direction: shift right, new data enters at the MSB
                 out <= {data, out[31:1]};
             end else begin
-                // LSB direction: shift left, new data enters at the LSB
                 out <= {out[30:0], data};
             end
         end
